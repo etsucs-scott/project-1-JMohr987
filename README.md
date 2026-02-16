@@ -1,43 +1,40 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/2QC0Bpz-)
-# CSCI 1260 — Project
-
-## Project Instructions
-All project requirements, grading criteria, and submission details are provided on **D2L**.  
-Refer to D2L as the *authoritative source* for this assignment.
-
-This repository is intentionally minimal. You are responsible for:
-- Creating the solution and projects
-- Designing the class structure
-- Implementing the required functionality
-
----
-
-## Getting Started (CLI)
-
-You may use **Visual Studio**, **VS Code**, or the **terminal**.
-
-### Create a solution
-```bash
-dotnet new sln -n ProjectName
-```
-
-### Create a project (example: console app)
-```bash
-dotnet new console -n ProjectName.App
-```
-
-### Add the project to the solution
-```bash
-dotnet sln add ProjectName.App
-```
-
 ### Build and run
 ```bash
 dotnet build
-dotnet run --project ProjectName.App
+dotnet run --project ./src/AdventureGame.Console
 ```
 
 ## Notes
-- Commit early and commit often.
-- Your repository history is part of your submission.
-- Update this README with build/run instructions specific to your project.
+--Controls--
+Use the Arrow keys to move and press Z to drink potions
+
+--Display--
+# = Wall
+. = Empty space
+@ = Player
+M = Monster
+W = weapon
+P = potion
+E = exit
+
+--Gameplay--
+Get to the exit to win!
+If you run out of HP it's game over!
+You start at 100 HP
+drink potions to recover 20 hp, max of 150 hp
+Pickup weapons to get a damage modifier
+Battles start with the player attacking the monster (when you walk over the monster tile)
+Player attacks first
+damage is 10 + weapon modifier
+Monster attacks after
+damage is always 10 and hp is from 30-50
+Battle ends when either the player or monter dies
+--UML--
+AdventerGameUML.drawio.png
+Diagram displays the associations the required classes have with each other
+
+--git--
+git clone https://github.com/etsucs-scott/project-1-JMohr987.git
+Enter the project directory for building and running
+dotnet build
+dotnet run --project ./src/AdventureGame.Console

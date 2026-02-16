@@ -1,49 +1,31 @@
 ﻿AdventureGame.Core.Player p1 = new AdventureGame.Core.Player();
-AdventureGame.Core.Player p2 = new AdventureGame.Core.Player();
+AdventureGame.Core.Maze m = new AdventureGame.Core.Maze();
+AdventureGame.Core.Gameplay g = new AdventureGame.Core.Gameplay(ref m, ref p1);
 
-Console.WriteLine($"Before attack {p2.Health}");
+m.Generate();
+m.PrintMaze();
+Console.WriteLine($"Health: {p1.Health}");
+Console.WriteLine($"Potions: {p1.potionList.Count}");
 
-p1.Attack(p2);
+bool go = true;
+while (go)
+{
+   g.MovePlayer(); 
+   go = g.HandleSpace();
+   Console.Clear();
+   m.PrintMaze();
+   Console.WriteLine($"Health: {p1.Health}");
+   Console.WriteLine($"Potions: {p1.potionList.Count}");
+}
 
-Console.WriteLine($"After attack {p2.Health}");
+if (p1.Health > 0)
+{
+    Console.WriteLine("You Win!");
+}
+else
+{
+    Console.WriteLine("Game Over...");
+}
+return 0;
 
-AdventureGame.Core.Weapon w1 = new AdventureGame.Core.Weapon("Axe", 2);
-
-p1.PickupItem(w1);
-
-Console.WriteLine($"wList count: {p1.weaponList.Count}");
-
-AdventureGame.Core.Weapon w2 = new AdventureGame.Core.Weapon("Axe", 10);
-
-p1.PickupItem(w2);
-
-Console.WriteLine($"Before attack {p2.Health}");
-
-p1.Attack(p2);
-
-Console.WriteLine($"After attack {p2.Health}");
-
-
-AdventureGame.Core.Weapon w3 = new AdventureGame.Core.Weapon("Axe", 5);
-
-p1.PickupItem(w3);
-
-Console.WriteLine($"Before attack {p2.Health}");
-
-p1.Attack(p2);
-
-Console.WriteLine($"After attack {p2.Health}");
-
-
-AdventureGame.Core.Monster m = new AdventureGame.Core.Monster();
-
-Console.WriteLine($"M health: {m.Health}");
-
-p1.Attack(m);
-m.Attack(p2);
-Console.WriteLine($"M health: {m.Health}");
-Console.WriteLine($"After attack {p2.Health}");
-
-p2.TakePotion();
-Console.WriteLine($"After potion {p2.Health}");
 

@@ -11,12 +11,16 @@ public class Monster : ICharacter
 
     public void Attack(ICharacter enemy)
     {
+
+        Console.WriteLine($"Monster attacks for {damage} damage!");
         enemy.TakeDamage(damage);
     }
 
     public void TakeDamage(int d)
     {
         Health -= d;
+        Console.WriteLine($"Monster has {Health} health remaining!");
+        Console.ReadKey();
     }
 
     public int Health {get; private set;}
