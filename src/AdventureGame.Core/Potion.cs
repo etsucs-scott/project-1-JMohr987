@@ -1,5 +1,6 @@
 namespace AdventureGame.Core;
 
+//Health is part of the constructor to easily add potions that heal different amounts of damage
 public class Potion : Item
 {
     public Potion(string n, int h)

@@ -2,6 +2,7 @@ namespace AdventureGame.Core;
 
 public class Gameplay
 {
+    //References to move the player properly and engage in battles
     public Gameplay(ref Maze m, ref Player p)
     {
         maze = m;
@@ -11,6 +12,8 @@ public class Gameplay
         rnd = new Random();
     }
 
+    //Moves character
+    //Only walls stop movement, so only need to check for walls
     public void MovePlayer()
     {
         ConsoleKey key = Console.ReadKey().Key;
@@ -63,6 +66,10 @@ public class Gameplay
         }
     }
 
+    //Handles all types of tiles.
+    //Is a boolean to keep the game loop running
+    //Returns true to continue the loop, and false to stop
+    //Only returns false on win or lose
     public bool HandleSpace()
     {
         switch (maze.mazeArray[PlayerY,PlayerX])
@@ -104,7 +111,9 @@ public class Gameplay
         }
         return true;
     }
-
+    
+    //Monster doesn't need to be generated before the battle, so it's done here
+    //Uses returns to get out of the loop to make the code cleaner
     public bool Battle()
     {
         Monster monster = new Monster();
